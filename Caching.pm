@@ -44,10 +44,6 @@ Geo::Caching - Object interface for querying Geocaching.com website
     ####################################
     ####
 
-    my $wpt_from_xml = Geo::Cache->new( xml => $xml, );
-
-    my $xml = $wpt->xml;
-
 =head1 DESCRIPTION
 
 Provide an object interface to query Geocaching.com 
@@ -70,7 +66,7 @@ LICENSE file included with this module.
 # }}}
 
 use vars qw($VERSION $AUTOLOAD);
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 # sub new {{{
 
@@ -221,11 +217,9 @@ sub query {
 		open (F, $t_path);
 		while(<F>) {$content .= $_};
 		close(F);
-warn "hi\n";
 		$self->parse_gpx(xml => $content,
 				 cache_list => $cache_list,
 				 );
-warn "hi 2\n";
 		return @$cache_list;
         }
 
